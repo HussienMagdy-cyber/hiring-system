@@ -1,0 +1,398 @@
+/* ============================================
+   HIRING SYSTEM — GLASS ADMIN THEME (v2)
+   Minimal, elegant, legible glassmorphism
+   This file only loads on Hiring System admin
+   pages (see HS_Admin::assets), so selectors
+   are scoped directly on body/wrap — no need
+   for fragile body-class matching.
+   ============================================ */
+
+:root {
+    --hs-accent: #B9184A;
+    --hs-accent-dark: #96123D;
+    --hs-accent-soft: rgba(185, 24, 74, 0.08);
+    --hs-accent-glow: rgba(185, 24, 74, 0.20);
+    --hs-ink: #1a1a2e;
+    --hs-muted: #7a7a8c;
+    --hs-line: rgba(20, 20, 40, 0.07);
+    --hs-glass: rgba(255, 255, 255, 0.86);
+    --hs-glass-strong: #ffffff;
+    --hs-shadow-sm: 0 1px 2px rgba(20, 20, 40, 0.04), 0 6px 18px rgba(20, 20, 40, 0.05);
+    --hs-shadow-md: 0 4px 10px rgba(20, 20, 40, 0.05), 0 16px 36px rgba(20, 20, 40, 0.08);
+    --hs-radius: 16px;
+    --hs-radius-sm: 10px;
+}
+
+/* ===== Page canvas ===== */
+body {
+    background: #f3f3f7;
+}
+#wpcontent, #wpbody-content { background: transparent; }
+
+.wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 1360px;
+}
+
+.wrap > h1 {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    color: var(--hs-ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.wrap > h1 .page-title-action {
+    background: var(--hs-accent);
+    border: none !important;
+    color: #fff !important;
+    border-radius: 999px !important;
+    padding: 7px 20px !important;
+    font-weight: 600 !important;
+    font-size: 12.5px !important;
+    box-shadow: 0 4px 12px var(--hs-accent-glow);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.wrap > h1 .page-title-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--hs-accent-glow);
+}
+
+/* ===== Core glass surface — every card-like block in the plugin ===== */
+.hs-stat-card,
+.hs-pipeline-overview,
+.hs-recent-activity,
+.hs-card,
+.hs-filter-bar,
+.hs-pipeline-column,
+.wp-list-table {
+    background: var(--hs-glass) !important;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    outline: 1px solid var(--hs-line);
+    border-radius: var(--hs-radius) !important;
+    box-shadow: var(--hs-shadow-sm) !important;
+}
+
+/* ===== Dashboard stat cards ===== */
+.hs-stats-grid { gap: 16px !important; }
+.hs-stat-card {
+    padding: 22px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hs-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hs-shadow-md) !important;
+}
+.hs-stat-number {
+    color: var(--hs-accent) !important;
+    font-weight: 800 !important;
+    font-size: 28px !important;
+    letter-spacing: -0.5px;
+}
+.hs-stat-label {
+    color: var(--hs-muted) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-size: 10.5px !important;
+    margin-top: 6px !important;
+}
+
+/* ===== Section cards (pipeline overview, recent activity, generic card) ===== */
+.hs-pipeline-overview,
+.hs-recent-activity,
+.hs-card {
+    padding: 24px !important;
+    margin-bottom: 18px !important;
+}
+.hs-pipeline-overview h2,
+.hs-recent-activity h2,
+.hs-card h2,
+.hs-card h3 {
+    color: var(--hs-ink) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--hs-line) !important;
+    padding-bottom: 12px !important;
+    margin: 0 0 18px !important;
+}
+
+.hs-pipeline-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    border: none !important;
+}
+.hs-pipeline-segment {
+    width: auto !important;
+    flex: 1 1 120px !important;
+    min-width: 110px !important;
+    height: auto !important;
+    padding: 16px 10px !important;
+    border-radius: var(--hs-radius-sm) !important;
+    border: 1px solid var(--hs-line) !important;
+    background: rgba(20, 20, 40, 0.025) !important;
+}
+.hs-pipeline-segment span {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: var(--hs-ink) !important;
+}
+.hs-pipeline-segment small {
+    font-size: 10.5px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--hs-muted) !important;
+    margin-top: 4px !important;
+}
+
+/* ===== Tables ===== */
+.wp-list-table { overflow: hidden; border-collapse: separate !important; }
+.wp-list-table thead th, .wp-list-table thead td {
+    background: rgba(20, 20, 40, 0.025) !important;
+    color: var(--hs-muted) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    font-size: 10.5px !important;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--hs-line) !important;
+}
+.wp-list-table tbody tr { background: transparent !important; transition: background 0.15s ease; }
+.wp-list-table.striped > tbody > tr:nth-child(odd) { background: rgba(20, 20, 40, 0.018) !important; }
+.wp-list-table tbody tr:hover { background: var(--hs-accent-soft) !important; }
+.wp-list-table td, .wp-list-table th { border-bottom: 1px solid var(--hs-line) !important; padding: 12px !important; }
+
+/* ===== Status badges / pills — keep their original hues, just refine shape ===== */
+.hs-status-badge, .hs-badge {
+    display: inline-block;
+    border-radius: 999px !important;
+    padding: 4px 13px !important;
+    font-weight: 700 !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.3px;
+}
+
+/* ===== Buttons ===== */
+.button, .button-secondary {
+    border-radius: 999px !important;
+    background: #fff !important;
+    border: 1px solid var(--hs-line) !important;
+    color: var(--hs-ink) !important;
+    font-weight: 600 !important;
+    box-shadow: var(--hs-shadow-sm) !important;
+    transition: all 0.18s ease !important;
+}
+.button:hover, .button-secondary:hover {
+    border-color: var(--hs-accent) !important;
+    color: var(--hs-accent) !important;
+    transform: translateY(-1px);
+}
+.button-primary {
+    border-radius: 999px !important;
+    background: var(--hs-accent) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px var(--hs-accent-glow) !important;
+}
+.button-primary:hover {
+    background: var(--hs-accent-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--hs-accent-glow) !important;
+}
+
+/* ===== Form fields ===== */
+input[type="text"], input[type="email"], input[type="number"],
+input[type="url"], input[type="search"], input[type="datetime-local"],
+input[type="tel"], select, textarea {
+    background: #fff !important;
+    border: 1px solid var(--hs-line) !important;
+    border-radius: var(--hs-radius-sm) !important;
+    padding: 8px 13px !important;
+    color: var(--hs-ink) !important;
+    box-shadow: none !important;
+    transition: all 0.18s ease !important;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--hs-accent) !important;
+    box-shadow: 0 0 0 3px var(--hs-accent-soft) !important;
+}
+
+.hs-filter-bar { padding: 14px 18px !important; margin-bottom: 18px !important; }
+
+/* ===== Application detail page ===== */
+.hs-score-bar { background: rgba(20, 20, 40, 0.06) !important; border-radius: 999px !important; overflow: hidden; height: 7px !important; }
+.hs-score-fill { background: linear-gradient(90deg, var(--hs-accent), #e0668e) !important; border-radius: 999px !important; }
+.hs-total-score strong { color: var(--hs-accent) !important; }
+
+.hs-note {
+    background: rgba(20, 20, 40, 0.025) !important;
+    border: 1px solid var(--hs-line) !important;
+    border-radius: var(--hs-radius-sm) !important;
+}
+.hs-note-private { background: rgba(230, 81, 0, 0.06) !important; }
+.hs-note-form { border-top: 1px solid var(--hs-line) !important; }
+
+.hs-timeline-dot { background: var(--hs-accent) !important; box-shadow: 0 0 0 4px var(--hs-accent-soft); }
+.hs-timeline::before { background: var(--hs-line) !important; }
+
+.hs-current-status { border-radius: var(--hs-radius-sm) !important; }
+.button-block { border-radius: var(--hs-radius-sm) !important; font-weight: 600 !important; margin-bottom: 8px !important;}
+.hs-btn-whatsapp { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25) !important; }
+.hs-btn-call { box-shadow: 0 4px 12px rgba(34, 113, 177, 0.25) !important; }
+
+.hs-interview-item {
+    background: rgba(20, 20, 40, 0.025) !important;
+    border: 1px solid var(--hs-line) !important;
+    border-radius: var(--hs-radius-sm) !important;
+}
+.hs-interview-form { border-top: 1px solid var(--hs-line) !important; }
+
+/* ===== Kanban pipeline board ===== */
+.hs-pipeline-board { gap: 16px !important; }
+.hs-pipeline-column { padding: 0 !important; overflow: hidden; }
+.hs-pipeline-header { border-radius: 0 !important; }
+.hs-pipeline-cards { padding: 12px !important; }
+.hs-pipeline-card {
+    background: #fff !important;
+    border: 1px solid var(--hs-line) !important;
+    border-radius: var(--hs-radius-sm) !important;
+    box-shadow: var(--hs-shadow-sm) !important;
+    transition: all 0.2s ease !important;
+}
+.hs-pipeline-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--hs-shadow-md) !important;
+    border-color: var(--hs-accent) !important;
+}
+
+
+
+/* ===== Settings / form-table pages ===== */
+.form-table th { color: var(--hs-ink); font-weight: 600; }
+.form-table td .description { color: var(--hs-muted); }
+
+/* ===== Notices ===== */
+.notice {
+    border-radius: var(--hs-radius-sm) !important;
+    border-left-width: 4px !important;
+    background: #fff !important;
+    box-shadow: var(--hs-shadow-sm) !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .hs-pipeline-board { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 782px) {
+    .hs-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .hs-detail-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ===== Consistent vertical rhythm ===== */
+.wrap > h1 { margin-bottom: 24px !important; }
+.wrap > h2, .wrap h2 { margin-top: 32px !important; margin-bottom: 16px !important; }
+.wp-list-table { margin-bottom: 24px !important; }
+.notice { margin: 16px 0 22px !important; }
+.tablenav { margin-bottom: 34px !important; }
+.tablenav.top { margin-top: 4px !important; }
+.form-table { margin-bottom: 8px !important; }
+.form-table tr { border-bottom: 1px solid var(--hs-line); }
+.form-table th, .form-table td { padding: 16px 10px !important; }
+.submit, p.submit { margin-top: 24px !important; margin-bottom: 12px !important; }
+.hs-detail-grid { margin-top: 4px !important; }
+.hs-detail-sidebar .hs-card:last-child,
+.hs-detail-main .hs-card:last-child { margin-bottom: 0 !important; }
+.hs-dept-filter { margin-bottom: 24px !important; }
+
+/* ===== Settings email preview ===== */
+.hs-settings-wrap .hs-settings-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.hs-settings-form-column {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.hs-settings-preview-column {
+    flex: 0 0 420px;
+    max-width: 420px;
+    position: sticky;
+    top: 32px;
+}
+
+.hs-email-preview-panel {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.hs-email-preview-panel h2 {
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+}
+
+.hs-email-preview-panel .description {
+    margin: 0 0 14px;
+}
+
+.hs-preview-subject-line {
+    margin: 0 0 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.hs-preview-frame-wrap {
+    background: #f3f4f6;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#hs-email-preview-frame {
+    display: block;
+    width: 100%;
+    height: 620px;
+    border: 0;
+    background: #f3f4f6;
+}
+
+.hs-preview-note {
+    margin: 10px 0 0 !important;
+    font-size: 12px;
+}
+
+@media (max-width: 1200px) {
+    .hs-settings-wrap .hs-settings-layout {
+        flex-direction: column;
+    }
+
+    .hs-settings-preview-column {
+        flex: 1 1 auto;
+        max-width: none;
+        width: 100%;
+        position: static;
+    }
+
+    #hs-email-preview-frame {
+        height: 520px;
+    }
+}
